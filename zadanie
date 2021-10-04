@@ -1,0 +1,51 @@
+#Порядок действий в миниконде
+conda create -n my_py_env1 python=3.9.5
+conda activate my_py_env1
+conda install -n my_py_env1 numpy
+conda install -n my_py_env1 pandas
+conda install -n my_py_env1 matplotlib
+conda install -n my_py_env1 seaborn
+conda install -n my_py_env1 jupyterlab
+
+#Jupyter:
+import pandas as pd
+
+#создадим файл pandas2184.csv 
+#и поместим туда: 
+animal,weight_id,water_need
+elephant,6000,500
+elephant,6000,600
+elephant,6000,550
+tiger,310,300
+tiger,310,320
+tiger,310,330
+tiger,310,290
+tiger,310,310
+zebra,400,200
+zebra,400,220
+zebra,400,240
+zebra,400,230
+zebra,400,220
+zebra,400,100
+zebra,400,80
+lion,190,420
+lion,190,600
+lion,190,500
+lion,190,390
+kangaroo,50,410
+kangaroo,50,430
+kangaroo,50,410
+
+#прочитаем данные с помощью
+pd.read_csv('pandas2184.csv', delimiter=',')
+#построим график используя dataset Video Game Sales with Ratings
+#предварительно загрузив файл csv и назвав его games.csv
+
+import pandas as pd
+df = pd.read_csv('games.csv', delimiter=',')
+type(df)
+pd.set_option("display.max.columns", None)
+df.head()
+%matplotlib      #открывать график будем с помощью matplotlib
+sales_df = df[[x for x in df.columns if 'Sales' in x] + ['Year_of_Release']]
+sales_df.groupby('Year_of_Release').sum().plot()
